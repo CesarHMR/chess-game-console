@@ -13,6 +13,9 @@ namespace Chess
         {
             Position p = new Position(1, 1);
             Console.WriteLine(p.ToString());
+
+
+            Console.ReadLine();
         }
     }
 }
