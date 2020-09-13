@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    class Program
+    class Screen
     {
-        static void Main(string[] args)
+        public static void PrintBoard(Board b)
         {
-            Board b = new Board();
-            Screen.PrintBoard(b);
-
-
-            Console.ReadLine();
+            Console.Write("aaa");
         }
     }
 }
