@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace GameComponents
 {
-    public enum Color { BLACK, WHITE };
+    public enum Color { BLACK, WHITE, YELLOW, GREEN };
 }
