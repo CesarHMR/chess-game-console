@@ -11,7 +11,24 @@ namespace Chess
     {
         public static void PrintBoard(Board b)
         {
-            Console.Write("aaa");
+            for (int i = 0; i <= b.GetSize(); i++)
+            {
+                if (i == b.GetSize())
+                {
+                    Console.WriteLine("  A B C D E F G H");
+                }
+                else
+                {
+                    Console.Write(i + 1);
+
+                    for (int j = 0; j < b.GetSize(); j++)
+                    {
+                        Console.Write(" -");
+                    }
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }
