@@ -11,8 +11,8 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            Position p = new Position(1, 1);
-            Console.WriteLine(p.ToString());
+            Board b = new Board();
+            Console.WriteLine(b.ToString());
 
 
             Console.ReadLine();

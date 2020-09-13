@@ -1,4 +1,4 @@
-﻿using Chess.GameComponents;
+﻿using GameComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;

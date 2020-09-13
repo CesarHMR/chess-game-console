@@ -8,13 +8,13 @@ namespace GameComponents
 {
     class Board
     {
-        //Chess always have a 8x8 board
         const int size = 8;
-        int[,] grid;
 
-        public Board()
+        public int GetSize() => size;
+
+        public override string ToString()
         {
-            grid = new int[size, size];
+            return "Board with " + size + "x" + size;
         }
     }
 }
