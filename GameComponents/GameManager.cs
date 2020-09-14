@@ -8,6 +8,8 @@ namespace GameComponents
 {
     class GameManager
     {
+        ChessBoard board;
+
 
     }
 }
