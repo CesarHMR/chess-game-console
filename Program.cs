@@ -11,7 +11,7 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            Board b = new Board();
+            ChessBoard b = new ChessBoard();
             Screen.PrintBoard(b);
 
 

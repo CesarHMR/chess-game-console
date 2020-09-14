@@ -9,7 +9,7 @@ namespace Chess
 {
     class Screen
     {
-        public static void PrintBoard(Board b)
+        public static void PrintBoard(ChessBoard b)
         {
             for (int i = 0; i <= b.GetSize(); i++)
             {
@@ -30,5 +30,7 @@ namespace Chess
                 Console.WriteLine();
             }
         }
+
+        bool IsTheLastLine(int i) => i == 8;
     }
 }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace GameComponents
 {
-    abstract class ChessPiece
+    abstract class Piece
     {
         public Color color { get; protected set; }
         public Position position { get; protected set; }
-        public Board board { get; protected set; }
+        public ChessBoard board { get; protected set; }
 
-        public ChessPiece(Color color, Position position, Board board)
+        public Piece(Color color, Position position, ChessBoard board)
         {
             this.color = color;
             this.position = position;
