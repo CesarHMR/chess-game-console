@@ -11,7 +11,7 @@ namespace Chess
     {
         public static void PrintBoard(ChessBoard b)
         {
-            for (int i = 0; i < 8; i++)//for each column
+            for (int i = 7; i >= 0; i--)//for each column
             {
                 Console.Write(i + 1);
 
@@ -25,7 +25,7 @@ namespace Chess
                     }
                     else
                     {
-                        Console.Write(b.GetPieceName(thisPosition));
+                        Console.Write(" " + b.GetPieceName(thisPosition));
                     }
                 }
 
@@ -38,6 +38,6 @@ namespace Chess
             }
         }
 
-        static bool IsTheLastLine(int i) => i == 7;
+        static bool IsTheLastLine(int i) => i == 0;
     }
 }

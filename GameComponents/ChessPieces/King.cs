@@ -12,7 +12,7 @@ namespace GameComponents.ChessPieces
 
         public override string ToString()
         {
-            return " K";
+            return "K";
         }
     }
 }

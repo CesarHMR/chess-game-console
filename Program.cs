@@ -13,8 +13,7 @@ namespace Chess
         static void Main(string[] args)
         {
             ChessBoard board = new ChessBoard();
-            King king = new King(Color.BLACK, new Position(0,4), board);
-            board.PlacePiece(king);
+            board.SetNewBoard();
             Screen.PrintBoard(board);
 
             Console.ReadLine();

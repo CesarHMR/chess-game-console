@@ -44,8 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameComponents\ChessBoard.cs" />
+    <Compile Include="GameComponents\ChessPieces\Bishop.cs" />
     <Compile Include="GameComponents\ChessPieces\King.cs" />
+    <Compile Include="GameComponents\ChessPieces\Knight.cs" />
+    <Compile Include="GameComponents\ChessPieces\Pawn.cs" />
     <Compile Include="GameComponents\ChessPieces\Piece.cs" />
+    <Compile Include="GameComponents\ChessPieces\Queen.cs" />
+    <Compile Include="GameComponents\ChessPieces\Rook.cs" />
     <Compile Include="GameComponents\Position.cs" />
     <Compile Include="GameComponents\Color.cs" />
     <Compile Include="Program.cs" />

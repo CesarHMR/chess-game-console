@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace GameComponents.ChessPieces
 {
-    class Pawn : Piece
+    class Bishop : Piece
     {
-        public Pawn(Color color, Position position, ChessBoard board) : base(color, position, board) { }
+        public Bishop(Color color, Position position, ChessBoard board) : base (color, position, board) { }
 
         public override string ToString()
         {
-            return "P";
+            return "B";
         }
     }
 }
