@@ -11,26 +11,33 @@ namespace Chess
     {
         public static void PrintBoard(ChessBoard b)
         {
-            for (int i = 0; i <= b.GetSize(); i++)
+            for (int i = 0; i < 8; i++)//for each column
             {
-                if (i == b.GetSize())
-                {
-                    Console.WriteLine("  A B C D E F G H");
-                }
-                else
-                {
-                    Console.Write(i + 1);
+                Console.Write(i + 1);
 
-                    for (int j = 0; j < b.GetSize(); j++)
+                for (int j = 0; j < 8; j++)//for each line
+                {
+                    Position thisPosition = new Position(i, j);
+
+                    if (b.ThisPositionIsEmpty(thisPosition))
                     {
                         Console.Write(" -");
+                    }
+                    else
+                    {
+                        Console.Write(b.GetPieceName(thisPosition));
                     }
                 }
 
                 Console.WriteLine();
+
+                if (IsTheLastLine(i))
+                {
+                    Console.WriteLine("  A B C D E F G H");
+                }
             }
         }
 
-        bool IsTheLastLine(int i) => i == 8;
+        static bool IsTheLastLine(int i) => i == 7;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GameComponents;
+using GameComponents.ChessPieces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            ChessBoard b = new ChessBoard();
-            Screen.PrintBoard(b);
-
+            ChessBoard board = new ChessBoard();
+            King king = new King(Color.BLACK, new Position(0,4), board);
+            board.PlacePiece(king);
+            Screen.PrintBoard(board);
 
             Console.ReadLine();
         }

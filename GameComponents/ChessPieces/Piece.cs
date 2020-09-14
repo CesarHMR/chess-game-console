@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameComponents
+namespace GameComponents.ChessPieces
 {
     abstract class Piece
     {
@@ -19,6 +19,5 @@ namespace GameComponents
             this.position = position;
             this.board = board;
         }
-
     }
 }

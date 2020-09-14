@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GameComponents.ChessPieces;
 
 namespace GameComponents
 {
@@ -13,12 +9,13 @@ namespace GameComponents
 
         public void PlacePiece(Piece p)
         {
-            if (ThisPositionIsAvailable(p.position))
+            if (ThisPositionIsEmpty(p.position))
             {
                 pieces[p.position.x, p.position.y] = p;
             }
         }
 
-        bool ThisPositionIsAvailable(Position pos) => pieces[pos.x, pos.y] == null;
+        public bool ThisPositionIsEmpty(Position pos) => pieces[pos.x, pos.y] == null;
+        public string GetPieceName(Position pos) => pieces[pos.x, pos.y].ToString();
     }
 }
