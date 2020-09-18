@@ -8,7 +8,7 @@ namespace GameComponents.ChessPieces
 {
     class King : Piece
     {
-        public King(Color color, Position position, ChessBoard board) : base(color, position, board) { }
+        public King(Color color, Position position) : base(color, position) { }
 
         public override string ToString()
         {

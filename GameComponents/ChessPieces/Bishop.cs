@@ -8,7 +8,7 @@ namespace GameComponents.ChessPieces
 {
     class Bishop : Piece
     {
-        public Bishop(Color color, Position position, ChessBoard board) : base (color, position, board) { }
+        public Bishop(Color color, Position position) : base (color, position) { }
 
         public override string ToString()
         {

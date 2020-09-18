@@ -11,13 +11,10 @@ namespace GameComponents.ChessPieces
     {
         public Color color { get; protected set; }
         public Position position { get; protected set; }
-        public ChessBoard board { get; protected set; }
-
-        public Piece(Color color, Position position, ChessBoard board)
+        public Piece(Color color, Position position)
         {
             this.color = color;
             this.position = position;
-            this.board = board;
         }
     }
 }

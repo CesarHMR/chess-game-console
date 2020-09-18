@@ -10,7 +10,7 @@ namespace Chess.GameComponents.ChessPieces
 {
     class Knight : Piece
     {
-        public Knight(Color color, Position position, ChessBoard board) : base(color, position, board) { }
+        public Knight(Color color, Position position) : base(color, position) { }
 
         public override string ToString()
         {
