@@ -31,7 +31,7 @@ namespace GameComponents
                 return true;
             }
         }
-        public string GetPieceName(Position pos) => pieces[pos.x, pos.y].ToString();
+        public Piece GetPiece(Position pos) => pieces[pos.x, pos.y];
         public void SetNewBoard()
         {
             List<Piece> piecesToPlace = new List<Piece>();
@@ -89,7 +89,6 @@ namespace GameComponents
                 PlacePiece(item);
             }
         }
-        public bool IsThisPositionIsEmpty(Position pos) => pieces[pos.x, pos.y] == null;
         bool IsOutsideTheBoardRange(Position pos) => pos.x >= 8 || pos.y >= 8;
     }
 }

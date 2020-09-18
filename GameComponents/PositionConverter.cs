@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameComponents
 {
-    class PositionReader
+    class PositionConverter
     {
         public static Position ChessPositionToArrayPosition(string userInput)
         {
@@ -17,12 +17,12 @@ namespace GameComponents
             return position;
         }
 
-        public static int LineToX(string l)
+        static int LineToX(string l)
         {
             int line = int.Parse(l);
             return line - 1;
         }
-        public static int ColumnToY(string c)
+        static int ColumnToY(string c)
         {
             switch (c)
             {

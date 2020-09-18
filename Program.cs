@@ -22,7 +22,7 @@ namespace Chess
                 Console.WriteLine();
                 Console.WriteLine("Place a Pawn in :");
                 string userMessage = Console.ReadLine();
-                Position chosenPosition = PositionReader.ChessPositionToArrayPosition(userMessage);
+                Position chosenPosition = PositionConverter.ChessPositionToArrayPosition(userMessage);
                 board.PlacePiece(new Pawn(Color.BLACK, chosenPosition, board));
                 Console.Clear();
                 Screen.PrintBoard(board);

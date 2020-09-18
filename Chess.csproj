@@ -55,7 +55,7 @@
     <Compile Include="GameComponents\GameManager.cs" />
     <Compile Include="GameComponents\Position.cs" />
     <Compile Include="GameComponents\Color.cs" />
-    <Compile Include="GameComponents\PositionReader.cs" />
+    <Compile Include="GameComponents\PositionConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen.cs" />
