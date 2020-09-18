@@ -12,9 +12,17 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            ChessBoard board = new ChessBoard();
-            board.SetNewBoard();
-            Screen.PrintBoard(board);
+            try
+            {
+                ChessBoard board = new ChessBoard();
+                board.SetNewBoard();
+                Screen.PrintBoard(board);
+            }
+            catch(Exception e)
+            {
+                Console.Clear();
+                Console.WriteLine(e.Message);
+            }
 
             Console.ReadLine();
         }

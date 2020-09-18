@@ -8,15 +8,29 @@ namespace GameComponents
     {
         Piece[,] pieces = new Piece[8, 8];
 
-        void PlacePiece(Piece p)
+        public void PlacePiece(Piece p)
         {
-            if (ThisPositionIsEmpty(p.position))
+            if(IsValidPosition(p))
             {
                 pieces[p.position.x, p.position.y] = p;
             }
         }
 
-        public bool ThisPositionIsEmpty(Position pos) => pieces[pos.x, pos.y] == null;
+        bool IsValidPosition(Piece p) 
+        {
+            if(IsOutsideTheBoardRange(p.position))
+            {
+                string message =
+                    "Invalid Position -- Piece is being placed outside the board range (8x8)\n" +
+                    "Piece type: " + p.ToString() + " -- Piece position: " + p.position.ToString();
+
+                throw new BoardException(message);
+            }
+            else
+            {
+                return true;
+            }
+        }
         public string GetPieceName(Position pos) => pieces[pos.x, pos.y].ToString();
         public void SetNewBoard()
         {
@@ -75,5 +89,7 @@ namespace GameComponents
                 PlacePiece(item);
             }
         }
+        public bool IsThisPositionIsEmpty(Position pos) => pieces[pos.x, pos.y] == null;
+        bool IsOutsideTheBoardRange(Position pos) => pos.x >= 8 || pos.y >= 8;
     }
 }

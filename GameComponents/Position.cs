@@ -19,7 +19,7 @@ namespace GameComponents
 
         public override string ToString()
         {
-            return "Position: " + x + " / " + y;
+            return x + "/" + y;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Chess
                 {
                     Position thisPosition = new Position(i, j);
 
-                    if (b.ThisPositionIsEmpty(thisPosition))
+                    if (b.IsThisPositionIsEmpty(thisPosition))
                     {
                         Console.Write(" -");
                     }
