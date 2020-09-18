@@ -20,10 +20,16 @@ namespace Chess
                 Screen.PrintBoard(board);
                 //Place a Piece
                 Console.WriteLine();
-                Console.WriteLine("Place a Pawn in :");
-                string userMessage = Console.ReadLine();
-                Position chosenPosition = PositionConverter.ChessPositionToArrayPosition(userMessage);
-                board.PlacePiece(new Pawn(Color.BLACK, chosenPosition, board));
+
+                Console.WriteLine("Select a Piece :");
+                string originMessage = Console.ReadLine();
+                Console.WriteLine("Select a Destination :");
+                string destinationMessage = Console.ReadLine();
+
+                Position originPosition = PositionConverter.ChessPositionToArrayPosition(originMessage);
+                Position destinationPosition = PositionConverter.ChessPositionToArrayPosition(destinationMessage);
+                board.MovePiece(originPosition, destinationPosition);
+
                 Console.Clear();
                 Screen.PrintBoard(board);
             }

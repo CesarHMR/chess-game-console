@@ -16,5 +16,10 @@ namespace GameComponents.ChessPieces
             this.color = color;
             this.position = position;
         }
+
+        public void SetNewPosition(Position position)
+        {
+            this.position = position;
+        }
     }
 }
