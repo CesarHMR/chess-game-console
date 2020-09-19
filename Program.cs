@@ -14,26 +14,34 @@ namespace Chess
         {
             try
             {
-                //Create ChessBoard
                 ChessBoard board = new ChessBoard();
-                board.SetNewBoard();
+                board.SetNewGame();
                 Screen.PrintBoard(board);
-                //Place a Piece
-                Console.WriteLine();
+                for (int i = 0; i < 5; i++)
+                {
 
-                Console.WriteLine("Select a Piece :");
-                string originMessage = Console.ReadLine();
-                Console.WriteLine("Select a Destination :");
-                string destinationMessage = Console.ReadLine();
+                    Console.WriteLine("Select a Piece :");
+                    string originMessage = Console.ReadLine();
+                    Console.WriteLine("Select a Destination :");
+                    string destinationMessage = Console.ReadLine();
 
-                Position originPosition = PositionConverter.ChessPositionToArrayPosition(originMessage);
-                Position destinationPosition = PositionConverter.ChessPositionToArrayPosition(destinationMessage);
-                board.MovePiece(originPosition, destinationPosition);
+                    Position originPosition = PositionConverter.ChessPositionToArrayPosition(originMessage);
+                    Position destinationPosition = PositionConverter.ChessPositionToArrayPosition(destinationMessage);
 
-                Console.Clear();
-                Screen.PrintBoard(board);
+                    if (board.isValidMovement(originPosition, destinationPosition))
+                    {
+                        board.MovePiece(originPosition, destinationPosition);
+                        Console.Clear();
+                        Screen.PrintBoard(board);
+                    }
+                    else
+                    {
+                        Console.WriteLine("End Game");
+                        break;
+                    }
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.Clear();
                 Console.WriteLine(e.Message);

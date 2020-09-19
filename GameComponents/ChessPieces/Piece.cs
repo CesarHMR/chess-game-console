@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,23 @@ namespace GameComponents.ChessPieces
         public void SetNewPosition(Position position)
         {
             this.position = position;
+        }
+
+        protected abstract List<Position> GetValidDestinations(ChessBoard board);
+
+        public bool IsValidMovement(Position destination, ChessBoard board)
+        {
+            List<Position> validDestinations = GetValidDestinations(board);
+
+            foreach (Position validDestination in validDestinations)
+            {
+                if (destination.isEqual(validDestination))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

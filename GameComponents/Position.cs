@@ -21,5 +21,7 @@ namespace GameComponents
         {
             return x + "/" + y;
         }
+
+        public bool isEqual(Position pos) => x == pos.x && y == pos.y;
     }
 }

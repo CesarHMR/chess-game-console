@@ -16,5 +16,10 @@ namespace Chess.GameComponents.ChessPieces
         {
             return "H";//Horse
         }
+
+        protected override List<Position> GetValidDestinations(ChessBoard board)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

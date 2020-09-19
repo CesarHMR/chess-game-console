@@ -1,5 +1,6 @@
 ﻿using Chess.GameComponents.ChessPieces;
 using GameComponents.ChessPieces;
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
@@ -12,16 +13,33 @@ namespace GameComponents
 
         public void MovePiece(Position origin, Position destination)
         {
-            if (GetPiece(origin) == null)
-                return;
+            Piece pieceToMove = GetPiece(origin);
+            RemovePiece(pieceToMove);
+            pieceToMove.SetNewPosition(destination);
+            PlacePiece(pieceToMove);
+        }
 
-            if (IsInsideTheBoardRange(destination))
+        public bool isValidMovement(Position origin, Position destination)
+        {
+            if (GetPiece(origin) == null)
             {
-                Piece pieceToMove = GetPiece(origin);
-                RemovePiece(pieceToMove);
-                pieceToMove.SetNewPosition(destination);
-                PlacePiece(pieceToMove);
+                Console.WriteLine("Null origin");
+                return false;
             }
+
+            if (IsInsideTheBoardRange(destination) == false)
+            {
+                Console.WriteLine("Destination outside the board range");
+                return false;
+            }
+
+            if (GetPiece(origin).IsValidMovement(destination, this) == false)
+            {
+                Console.WriteLine("Invalid Movement");
+                return false;
+            }
+
+            return true;
         }
 
         void PlacePiece(Piece p)
@@ -36,13 +54,18 @@ namespace GameComponents
                 pieces[p.position.x, p.position.y] = p;
             }
         }
-
         void RemovePiece(Piece p)
         {
             pieces[p.position.x, p.position.y] = null;
         }
-        public Piece GetPiece(Position pos) => pieces[pos.x, pos.y];
-        public void SetNewBoard()
+        public Piece GetPiece(Position pos)
+        {
+            if (IsInsideTheBoardRange(pos))
+                return pieces[pos.x, pos.y];
+            else
+                return null;
+        }
+        public void SetNewGame()
         {
             List<Piece> piecesToPlace = new List<Piece>();
 
