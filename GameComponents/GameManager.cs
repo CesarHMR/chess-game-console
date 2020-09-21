@@ -1,68 +1,134 @@
 ﻿using Chess;
 using GameComponents.ChessPieces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace GameComponents
 {
     static class GameManager
     {
+        #region Members
         public static ChessBoard board { get; private set; }
         static Color playerToPlay;
-        static King[] kings = new King[2];
+        static bool kingNeedToMove = false;
+        static bool gameIsRunning = true;
+        static King whiteKing;
+        static King blackKing;
+        #endregion
 
         public static void StartGame()
         {
             board = new ChessBoard();
-            board.SetNewGame();
-            kings = AddKingsFromBoard();
             playerToPlay = Color.WHITE;
             Screen.PrintBoard(board);
+            RequestPlayerInput();
         }
 
-        static King[] AddKingsFromBoard()
+        static void SetKingsFromBoard()
         {
-            King[] kingsToAdd = new King[2];
-            foreach (Piece p in board.GetPieces())
+            foreach (Piece p in board.GetAllPieces())
             {
-                if(p.ToString() == "K")
+                if (p.ToString() == "K")
                 {
-                    if(p.color == Color.WHITE)
+                    if (p.color == Color.WHITE)
                     {
-                        kingsToAdd[0] = (King)p;
+                        whiteKing = (King)p;
                     }
                     else
                     {
-                        kingsToAdd[1] = (King)p;
+                        blackKing = (King)p;
                     }
                 }
             }
-
-            return kingsToAdd;
         }
-        public static void NextTurn() => playerToPlay = playerToPlay == Color.WHITE ? Color.BLACK : Color.WHITE;
-
-        static bool CheckWinCondition()
+        static void NextTurn()
         {
-            foreach (Piece p in board.GetPieces())
+            playerToPlay = playerToPlay == Color.WHITE ? Color.BLACK : Color.WHITE;
+            RequestPlayerInput();
+        }
+        public static void FinishTurn()
+        {
+            CheckWinCondition();
+
+            if (gameIsRunning)
+                NextTurn();
+        }
+        static void CheckWinCondition()
+        {
+            kingNeedToMove = false;
+
+            foreach (Piece p in board.GetAllPieces())
             {
                 if (p.ThisPieceCanKillTheKing())
                 {
-
+                    kingNeedToMove = true;
                 }
             }
-            return false;
-        }
 
+            if (kingNeedToMove)
+                CheckKingsCondition();
+        }
         static void CheckKingsCondition()
         {
-            foreach (King k in kings)
+            King kingToCheck = playerToPlay == Color.WHITE ? blackKing : whiteKing;
+
+            if (kingToCheck.CheckMate())
             {
-                //if(k.)
+                FinishMatch(playerToPlay);
             }
+        }
+        static void FinishMatch(Color color)
+        {
+            gameIsRunning = false;
+            Console.Clear();
+            Console.WriteLine("The " + color + " player has won");
+        }
+        static void RequestPlayerInput()
+        {
+            Position origin;
+            Position destination;
+
+            while (true)//destination validation
+            {
+                while (true)//origin validation
+                {
+                    Console.Clear();
+                    Screen.PrintBoard(board);
+                    Console.WriteLine();
+                    Console.WriteLine(playerToPlay + " PLAYER TURN");
+                    Console.WriteLine();
+                    Console.WriteLine("Select a Piece :");
+                    string originMessage = Console.ReadLine();
+                    Console.WriteLine("Select a Destination :");
+                    string destinationMessage = Console.ReadLine();
+
+                    origin = PositionConverter.ChessPositionToMatrizPosition(originMessage);
+                    destination = PositionConverter.ChessPositionToMatrizPosition(destinationMessage);
+
+                    if (board.GetPiece(origin) == null || board.GetPiece(origin).color != playerToPlay)
+                    {
+                        Console.WriteLine("Invalid Origin Position, need select a valid piece");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (board.isValidMovement(origin, destination))
+                {
+                    board.MovePiece(origin, destination);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong Destination");
+                    Console.ReadLine();
+                }
+            }
+
+            FinishTurn();
         }
     }
 }

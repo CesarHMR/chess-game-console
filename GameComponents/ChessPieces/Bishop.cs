@@ -14,7 +14,7 @@ namespace GameComponents.ChessPieces
         {
             return "B";
         }
-        protected override List<Position> GetValidDestinations()
+        protected override List<Position> GetValidDestinations(ChessBoard board)
         {
             throw new NotImplementedException();
         }

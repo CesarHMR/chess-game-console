@@ -11,6 +11,11 @@ namespace GameComponents
         Piece[,] pieces = new Piece[8, 8];
         List<Piece> deadPieces = new List<Piece>();
 
+        public ChessBoard()
+        {
+            SetNewGame();
+        }
+
         public void MovePiece(Position origin, Position destination)
         {
             Piece pieceToMove = GetPiece(origin);
@@ -65,7 +70,7 @@ namespace GameComponents
             else
                 return null;
         }
-        public Piece[,] GetPieces() => pieces;
+        public Piece[,] GetAllPieces() => pieces;
         public void SetNewGame()
         {
             List<Piece> piecesToPlace = new List<Piece>();

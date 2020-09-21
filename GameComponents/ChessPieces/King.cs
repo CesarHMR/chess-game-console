@@ -14,9 +14,21 @@ namespace GameComponents.ChessPieces
         {
             return "K";
         }
-        protected override List<Position> GetValidDestinations()
+        protected override List<Position> GetValidDestinations(ChessBoard board)
         {
             throw new NotImplementedException();
+        }
+
+        public bool CheckMate()
+        {
+            /*            if(GetValidDestinations() != null)
+                        {
+                            foreach (Position p in GetValidDestinations())
+                            {
+                                if(p)
+                            }
+                        }*/
+            return false;
         }
     }
 }

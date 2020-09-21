@@ -10,7 +10,7 @@ namespace GameComponents.ChessPieces
 {
     abstract class Piece
     {
-        #region Settings
+        #region Members
         public Color color { get; protected set; }
         public Position position { get; protected set; }
         public Piece(Color color, Position position)
@@ -18,8 +18,6 @@ namespace GameComponents.ChessPieces
             this.color = color;
             this.position = position;
         }
-
-        protected ChessBoard board = GameManager.board;
         #endregion
 
         public void SetNewPosition(Position position)
@@ -28,7 +26,7 @@ namespace GameComponents.ChessPieces
         }
         public bool ThisPieceCanKillTheKing()
         {
-            foreach (Position pos in GetValidDestinations())
+            foreach (Position pos in GetValidDestinations(GameManager.board))
             {
                 Piece pieceInThisPosition = GameManager.board.GetPiece(pos);
 
@@ -46,7 +44,7 @@ namespace GameComponents.ChessPieces
         bool IsAnEnemyKing(Piece p) => p.ToString() == "K" && p.color != this.color;
         public bool IsValidMovement(Position destination)
         {
-            List<Position> validDestinations = GetValidDestinations();
+            List<Position> validDestinations = GetValidDestinations(GameManager.board);
 
             foreach (Position validDestination in validDestinations)
             {
@@ -58,7 +56,7 @@ namespace GameComponents.ChessPieces
 
             return false;
         }
-        protected abstract List<Position> GetValidDestinations();
-        public bool CanMove() => GetValidDestinations().Count > 0;
+        protected abstract List<Position> GetValidDestinations(ChessBoard board);
+        public bool CanMove() => GetValidDestinations(GameManager.board).Count > 0;
     }
 }

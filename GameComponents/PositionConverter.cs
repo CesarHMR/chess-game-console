@@ -8,7 +8,7 @@ namespace GameComponents
 {
     class PositionConverter
     {
-        public static Position ChessPositionToArrayPosition(string userInput)
+        public static Position ChessPositionToMatrizPosition(string userInput)
         {
             userInput = userInput.ToUpper();
             string line = userInput[0].ToString();
