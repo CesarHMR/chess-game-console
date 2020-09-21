@@ -16,7 +16,7 @@ namespace GameComponents.ChessPieces
         }
         protected override List<Position> GetValidDestinations(ChessBoard board)
         {
-            throw new NotImplementedException();
+            return new List<Position>();
         }
 
         public bool CheckMate()

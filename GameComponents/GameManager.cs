@@ -59,10 +59,14 @@ namespace GameComponents
 
             foreach (Piece p in board.GetAllPieces())
             {
-                if (p.ThisPieceCanKillTheKing())
+                if(p != null)
                 {
-                    kingNeedToMove = true;
+                    if (p.ThisPieceCanKillTheKing())
+                    {
+                        kingNeedToMove = true;
+                    }
                 }
+
             }
 
             if (kingNeedToMove)
