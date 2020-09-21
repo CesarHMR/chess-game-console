@@ -33,7 +33,7 @@ namespace GameComponents
                 return false;
             }
 
-            if (GetPiece(origin).IsValidMovement(destination, this) == false)
+            if (GetPiece(origin).IsValidMovement(destination) == false)
             {
                 Console.WriteLine("Invalid Movement");
                 return false;
@@ -65,6 +65,7 @@ namespace GameComponents
             else
                 return null;
         }
+        public Piece[,] GetPieces() => pieces;
         public void SetNewGame()
         {
             List<Piece> piecesToPlace = new List<Piece>();
